@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hq.dao.UserDAO">
+	
+	<select id="list" resultType="map">
+		SELECT  * FROM  hq_user LEFT JOIN hq_cla ON hq_user.cid=hq_cla.cid
+		<where>
+		<if test="mohu1!=null and mohu1!=''">
+			and uname like concat('%',#{mohu1},'%')
+		</if>
+		
+		</where>
+	</select>
+</mapper>
